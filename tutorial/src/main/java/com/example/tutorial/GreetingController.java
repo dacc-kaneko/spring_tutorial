@@ -14,7 +14,7 @@ public class GreetingController {
 
 	@GetMapping("/greeting")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		if (name == null || name.length() > 100 || !name.matches("^[a-zA-Z0-9 ]*$")) {
+		if (name.length() > 100 || !name.matches("^[a-zA-Z0-9 ]*$")) {
 			throw new IllegalArgumentException("Invalid name parameter");
 		}
 		return new Greeting(counter.incrementAndGet(), String.format(template, name));
